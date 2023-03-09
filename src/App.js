@@ -1,23 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import Candidatos from './components/Candidatos';
+import { ContextProvider } from './store/store';
 
 function App() {
+
+  const candidatosArr=[
+    "candidato1",
+    "candidato2",
+    "candidato3",
+    "candidato4",
+  ]
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ContextProvider>
+        <header className="App-header">
+          {candidatosArr.map((candidato)=>{
+            return (<Candidatos key={candidato}name={candidato}/>)
+          })}
+        </header>
+      </ContextProvider>
     </div>
   );
 }
